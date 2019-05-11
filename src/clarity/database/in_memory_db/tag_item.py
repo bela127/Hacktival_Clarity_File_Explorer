@@ -1,9 +1,10 @@
 from item import item
-import String
+from storage_item import Storage_item
+import typing
 
-class tag_item(item):
+class Tag_item(item):
 
-    def __init__(self, name: String, tag_list):
+    def __init__(self, name: str, tag_list: [Tag_item]):
         self.name = name        #name of the tag
         self.tag_list = tag_list #list of tags
-        self.used_in_item = []   #list of list of items
+        self.used_in_item: [[Storage_item]] = []   #list of list of items

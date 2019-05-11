@@ -1,7 +1,9 @@
 from item import item
+from tag_item import Tag_item
+import typing
 
-class storage_item(item):
-    def __init__(self, name, directory, tag_list):
+class Storage_item(item):
+    def __init__(self, name: str, directory: str, tag_list: [Tag_item]):
         self.name = name
         self.directory = directory
-        self.taglist = tag_list
+        self.tag_list = tag_list
