@@ -13,39 +13,41 @@ class core():
     def run(self):
         pass
     
-    def list_tags_start_with(text):
+
+    
+    def list_tags_start_with(self, text):
         pass
     
-    def list_tags_contain(text):
+    def list_tags_contain(self, text):
         pass
     
-    def list_items_with(tags):
+    def list_items_with(self, tags):
         pass
 
-    def list_files_with(tags):
+    def list_files_with(self, tags):
         pass
 
-    def list_folders_with(tags):
+    def list_folders_with(self, tags):
         pass
 
-    def list_tags_from(item):
-        pass
-    
-
-    def set_tag(item, tags):
-        pass
-
-
-    def index_item(name, directory, tags):
+    def list_tags_from(self, item):
         pass
     
-    def index_file(name, directory, tags):
+
+    def set_tag(self, item, tags):
         pass
 
-    def index_folder(name, directory, tags):
+
+    def index_item(self, name, directory, tags):
+        pass
+    
+    def index_file(self, name, directory, tags):
         pass
 
-    def create_tag(name, tags):
+    def index_folder(self, name, directory, tags):
+        pass
+
+    def create_tag(self, name, tags):
         pass
 
     
