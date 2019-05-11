@@ -6,7 +6,7 @@ Created on Sat May 11 17:55:05 2019
 """
 
 from PyQt5.QtCore import Qt
-from PyQt5.QtWidgets import QWidget, QLabel, QHBoxLayout, QLineEdit, QListWidget, QPushButton, QComboBox, QFrame, QGraphicsDropShadowEffect
+from PyQt5.QtWidgets import QWidget, QLabel, QHBoxLayout, QLineEdit, QListWidget, QPushButton, QComboBox, QFrame, QGraphicsDropShadowEffect, QScrollArea
 from FlowLayout import FlowLayout
 
 class InputItemWithDelete (QFrame):
@@ -62,7 +62,7 @@ class InputItemWithDelete (QFrame):
     
 
 
-class InputWithDropDownAndDelete (QFrame):
+class InputWithDropDownAndDelete (QScrollArea):
     
     def __init__(self, parent):
         
