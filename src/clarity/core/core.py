@@ -18,38 +18,38 @@ class Core():
     # List Tags with text
     
     def list_tags_start_with_text(self, text):
-        pass
+        return []
     
     def list_tags_with_text(self, text):
-        pass
+        return []
 
      # LIST items with tags
     
     def list_items_with_tags(self, tags):
-        pass
+        return []
 
     def list_tags_with_tags(self, tags):
-        pass
+        return []
 
     def list_files_with_tags(self, tags):
-        pass
+        return []
 
     def list_folders_with_tags(self, tags):
-        pass
+        return []
 
       # LIST Tags of item
 
     def list_tags_of_item(self, item):
-        pass
+        return []
 
     def list_tags_of_tag(self, tag):
-        pass
+        return []
 
     def list_tags_of_file(self, file):
-        pass
+        return []
 
     def list_tags_of_folder(self, folder):
-        pass
+        return []
     
     # SET Tags
 
@@ -99,10 +99,10 @@ class Core():
     def get_last_tag(self):
         return self.last_tag
 
-    def change_search_tag(self, orginal_tag, new_tag):
+    def change_search_tag(self, tag_to_change, new_tag):
         pass
 
-    def replace_search_tag(self, orginal_tag, new_tag):
+    def replace_search_tag(self, tag_to_replace, new_tag):
         pass
 
     # LIST predictions
@@ -119,7 +119,7 @@ class Core():
     # List Tags with querry
 
     def list_tags_with_querry(self, querry):
-        pass
+        return []
 
 ##
 

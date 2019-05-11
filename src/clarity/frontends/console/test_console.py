@@ -26,50 +26,40 @@ class Test_console(cmd.Cmd):
     def do_list_current_tags(self, args):
         tags = self.core.list_current_tags()
         print(tags)
-        pass
 
     def do_get_last_tag(self, args):
         tag = self.core.get_last_tag()
         print(tag)
-        pass
 
     def do_change_search_tag(self, args):
-        self.core.change_search_tag(tag_to_change)
-        pass
+        self.core.change_search_tag(tag_to_change, new_tag)
 
     def do_replace_search_tag(self, args):
-        self.core.replace_search_tag()
-        pass
+        self.core.replace_search_tag(tag_to_replace, new_tag)
 
     # LIST predictions
     
     def do_list_tag_predictions(self,args):
-        self.core.list_tag_predictions()
-        pass
+        tags = self.core.list_tag_predictions()
 
     def do_list_file_predictions(self,args):
-        self.core.list_file_prediction()
-        pass
+        files = self.core.list_file_predictions()
 
     def do_list_folder_predictions(self,args):
-        self.core.list_folder_predictions()
-        pass
+        folders = self.core.list_folder_predictions()
     
     # List Tags with text
 
     def do_list_tags_with_text(self, args):
-        self.core.list_tags_with_text(args)
-        pass
+        tags = self.core.list_tags_with_text(args)
     
     def do_list_tags_start_with_text(self, args):
-        self.core.list_tags_start_with_text(args)
-        pass
+        tags = self.core.list_tags_start_with_text(args)
 
     # List Tags with querry
 
     def do_list_tags_with_querry(self, args):
-        self.core.list_tags_with_querry()
-        pass
+        tags = self.core.list_tags_with_querry(querry)
 
     ##
 
@@ -77,120 +67,94 @@ class Test_console(cmd.Cmd):
 
     def set_item_tags(self, args):
         self.core.set_item_tags(item, tags)
-        pass
 
     def set_tag_tags(self, args):
         self.core.set_tag_tags(tag, tags)
-        pass
     
     def set_file_tags(self, args):
         self.core.set_file_tags(file, tags)
-        pass
     
     def set_folder_tags(self, args):
         self.core.set_folder_tags(folder, tags)
-        pass
 
     # ADD items
     
     def do_add_tag(self, args):
         self.core.add_tag(tag, tags = [])
-        pass
 
     def do_add_file(self, args):
         self.core.add_file(file, tags = [])
-        pass
 
     def do_add_folder(self, args):
         self.core.add_folder(folder, tags = [])
-        pass
 
     # LIST items with tags
 
     def do_list_items_with_tags(self, args):
-        self.core.list_items_with_tags(tags)
-        pass
+        items = self.core.list_items_with_tags(tags)
 
     def do_list_tags_with_tags(self, args):
-        self.core.list_tags_with_tags(tags)
-        pass
+        tags = self.core.list_tags_with_tags(tags)
 
     def do_list_files_with_tags(self, args):
-        self.core.list_files_with_tags(tags)
-        pass
+        files = self.core.list_files_with_tags(tags)
     
     def do_list_folders_with_tags(self, args):
-        self.core.list_folders_with_tags(tags)
-        pass
+        folders = self.core.list_folders_with_tags(tags)
 
     # LIST items with tag
 
     def do_list_items_with_tag(self, args):
-        self.core.list_items_with_tags(tags)
-        pass
+        items = self.core.list_items_with_tags(tags)
 
     def do_list_tags_with_tag(self, args):
-        self.core.list_tags_with_tags(tags)
-        pass
+        tags = self.core.list_tags_with_tags(tags)
 
     def do_list_files_with_tag(self, args):
-        self.core.list_files_with_tags(tags)
-        pass
+        files = self.core.list_files_with_tags(tags)
     
     def do_list_folders_with_tag(self, args):
-        self.core.list_folders_with_tags(tags)
-        pass
+        folders = self.core.list_folders_with_tags(tags)
 
     # LIST all items
 
     def do_list_all_files(self, args):
-        self.core.list_all_files()
-        pass
+        files = self.core.list_all_files()
 
     def do_list_all_folders(self, args):
-        self.core.list_all_folders()
-        pass
+        folders = self.core.list_all_folders()
 
     def do_list_all_tags(self, args):
-        self.core.list_all_tags()
-        pass
+        tags = self.core.list_all_tags()
 
     # LIST exact items
     
     def do_list_exact_files(self, args):
-        self.core.list_exact_files()
-        pass
+        files = self.core.list_exact_files(tags)
 
     def do_list_exact_folders(self, args):
-        self.core.list_exact_folders()
-        pass
+        folders = self.core.list_exact_folders(tags)
 
     def do_list_exact_tags(self, args):
-        self.core.list_exact_tags()
-        pass
+        tags = self.core.list_exact_tags(tags)
 
     # LIST Tags of item
 
     def do_list_tags_of_item(self, args):
-        self.core.list_tags_of_item(item)
-        pass
+        tags = self.core.list_tags_of_item(item)
 
     def do_list_tags_of_tag(self, args):
-        self.core.list_tags_of_tag(tag)
-        pass
+        tags = self.core.list_tags_of_tag(tag)
     
     def do_list_tags_of_file(self, args):
-        self.core.list_tags_of_file(file)
-        pass
+        tags = self.core.list_tags_of_file(file)
 
     def do_list_tags_of_folder(self, args):
-        self.core.list_tags_of_folder(folder)
-        pass
+        tags = self.core.list_tags_of_folder(folder)
 
     # MODULE stuff
     def do_list_all_modules(self, args):
-        self.core.list_all_modules()
-        pass
+        modules = self.core.list_all_modules()
 
     #TODO more module stuff... help etc
 
