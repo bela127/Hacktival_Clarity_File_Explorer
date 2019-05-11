@@ -9,17 +9,14 @@ class File_db():
         self.stor_items: [Storage_item] = []        #list of storage_items
 
     # gets an item and a taglist and addes these tags to the item   
-    def set_tags(self, item: Storage_item, tag_list: [Tag_item]):
+    def set_tags(self, item: File_item, tag_list: [Tag_item]):
         for i in self.stor_items:
             if item.name == self.stor_items[i].name:
                 for j in tag_list:
                     if tag_list[j] in self.stor_items[i].tag:
                         continue
                     else:
-                        if type(self.stor_items[i]) == type(Folder_item):
-                            tag_list[j].used_in_folde_item.append(item)
-                        else:
-                            tag_list[j].used_in_file_item.append(item)
+                        tag_list[j].used_in_file_item.append(item)
                         self.stor_items[i].tag_list.append(tag_list[j])
             return True
         return False
