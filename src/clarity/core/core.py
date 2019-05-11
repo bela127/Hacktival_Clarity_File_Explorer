@@ -14,11 +14,12 @@ def main():
 class Core():
 
     def __init__(self):
-
-        self.last_tag = root_tag
-        self.current_tags = [root_tag]
         self.tagDB = td.Tag_db()
         self.fileDB = fd.File_db()
+
+        root_tag = self.tagDB.tag("root")
+        self.last_tag = root_tag
+        self.current_tags = [root_tag]
         pass
 
     def run(self):

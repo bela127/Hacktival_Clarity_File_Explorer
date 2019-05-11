@@ -3,31 +3,32 @@ from item import Item
 
 class Tag_db():
     def __init__(self):
-        self.tags: [Tag_item] = []      #list of tags
+        root_tag = Tag_item("root")
+        self.tags: [Tag_item] = [root_tag]      #list of tags
     
     # returns all tags that start with the string text
     def tags_start_with(self, text):
         tag_list = []
-        for i in self.tags:
-            if text.startswith(self.tags[i].name):
-                tag_list.append(self.tags[i].name)
+        for tag in self.tags:
+            if tag.name.startswith(text):
+                tag_list.append(tag)
     
         return tag_list
 
     # returns all tags that contain the string text
     def tags_contain(self, text):
         tag_list = []
-        for i in self.tags:
-            if text in self.tags[i].name:
-                tag_list.append(self.tags[i])
+        for tag in self.tags:
+            if tag.name.contain(text):
+                tag_list.append(tag)
     
         return tag_list
 
     # returns a tag
     def tag(self, name):
-        for i in self.tags:
-            if name == self.tags[i].name:
-                return self.tags[i]
+        for tag in self.tags:
+            if name == tag.name:
+                return self.tag
         return None
     
     # gets a name and a taglist and creates a tag
@@ -37,9 +38,9 @@ class Tag_db():
     
     # gets an item and returns a list of tags of this item
     def list_tags_of_item(self, item: Item):
-        for i in self.tags:
-            if item.name == self.tags[i].name:
-                return self.tags[i].tag_list
+        for tag in self.tags:
+            if item.name == tag.name:
+                return tag.tag_list
         return[]
 
     # returns all existing tags
