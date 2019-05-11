@@ -18,9 +18,9 @@ class File_db():
                     else:
                         var = Folder_item(None,None,None)
                         if type(self.stor_items[i]) == type(var):
-                        tag_list[j].used_in_folde_item.append(item)
+                            tag_list[j].used_in_folde_item.append(item)
                         else:
-                        tag_list[j].used_in_file_item.append(item)
+                            tag_list[j].used_in_file_item.append(item)
                         self.stor_items[i].tag_list.append(tag_list[j])
             return True
         return False

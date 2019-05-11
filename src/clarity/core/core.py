@@ -1,5 +1,8 @@
 import clarity.database.in_memory_db.file_db as fd
 import clarity.database.in_memory_db.tag_db as td
+from clarity.database.in_memory_db.tag_item import Tag_item
+from clarity.database.in_memory_db.file_item import File_item
+from clarity.database.in_memory_db.folder_item import Folder_item
 
 if __name__ == "__main__":
     main()
@@ -11,6 +14,7 @@ def main():
 class Core():
 
     def __init__(self):
+
         self.last_tag = root_tag
         self.current_tags = [root_tag]
         self.tagDB = td.Tag_db()
