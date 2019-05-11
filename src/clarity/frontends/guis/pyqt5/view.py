@@ -7,7 +7,6 @@ Created on Sat May 11 15:50:17 2019
 
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QWidget, QListWidget, QLineEdit, QGridLayout
-#from right_panel import Right_Panel
 from inputwithddanddelete import InputWithDropDownAndDelete
 
 class Search_Input (QLineEdit):
