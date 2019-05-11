@@ -1,6 +1,6 @@
 
 import cmd, sys
-from ...Core.core import core
+from  Core.core import core
 
 
 def main():
