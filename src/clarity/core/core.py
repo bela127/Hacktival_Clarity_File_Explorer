@@ -62,11 +62,6 @@ class Core():
     
     # SET Tags of item
 
-    def set_item_tags(self, item, tags):
-        #TODO where to set them
-        self.tagDB.set_item_tags(item, tags)
-        self.tagDB.set_item_tags(item, tags)
-
     def set_tag_tags(self, tag, tags):
         self.tagDB.set_tag_tags(tag, tags)
     
