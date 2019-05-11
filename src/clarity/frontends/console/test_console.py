@@ -116,7 +116,7 @@ class Test_console(cmd.Cmd):
     def do_list_folders_with_tag(self, args):
         folders = self.core.list_folders_with_tags(tags)
 
-    # LIST all items
+    # LIST all items 
 
     def do_list_all_files(self, args):
         files = self.core.list_all_files()

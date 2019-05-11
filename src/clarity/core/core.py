@@ -94,7 +94,7 @@ class Core():
     # SEARCH helpers
 
     def list_current_tags(self):
-        return []
+        return self.current_tags
 
     def get_last_tag(self):
         return self.last_tag
@@ -126,25 +126,25 @@ class Core():
     # LIST all items
 
     def list_all_files(self):
-        pass
+        return []
 
     def list_all_folders(self):
-        pass
+        return []
 
     def list_all_tags(self):
-        pass
+        return []
 
     # LIST exact items
     
     def list_exact_files(self, tags):
-        pass
+        return []
 
     def list_exact_folders(self, tags):
-        pass
+        return []
 
     def list_exact_tags(self, tags):
-        pass
+        return []
 
     # MODULE stuff
     def list_all_modules(self):
-        pass
+        return []
