@@ -1,4 +1,3 @@
-import file_db
 from tag_item import Tag_item
 
 class Tag_db():

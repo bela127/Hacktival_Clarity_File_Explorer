@@ -13,6 +13,8 @@ class Core():
     def __init__(self):
         self.last_tag = root_tag
         self.current_tags = [root_tag]
+        self.tagDB = td.Tag_db()
+        self.fileDB = fd.File_db()
         pass
 
     def run(self):
@@ -21,64 +23,65 @@ class Core():
     # List Tags with text
     
     def list_tags_start_with_text(self, text):
-        td.
-        return []
+        return self.tagDB.tags_start_with(text)
     
     def list_tags_with_text(self, text):
-        return []
+        return self.tagDB.tags_contain(text)
 
      # LIST items with tags
 
     def list_tags_with_tags(self, tags):
-        return []
+        return self.tagDB.list_tags_with_tags(tags)
 
     def list_files_with_tags(self, tags):
-        return []
+        return self.tagDB.list_files_with_tags(tags)
 
     def list_folders_with_tags(self, tags):
-        return []
+        return self.tagDB.list_folders_with_tags(tags)
 
     def list_storage_items_with_tags(self, tags):
-        return []
+        return self.tagDB.list_storage_items_with_tags(tags)
 
       # LIST Tags of item
 
     def list_tags_of_item(self, item):
-        return []
+        return self.tagDB.list_tags_of_item(item)
 
     def list_tags_of_tag(self, tag):
-        return []
+        return self.tagDB.list_tags_of_item(tag)
 
     def list_tags_of_file(self, file):
-        return []
+        return self.tagDB.list_tags_of_item(file)
 
     def list_tags_of_folder(self, folder):
-        return []
+        return self.tagDB.list_tags_of_item(folder)
     
-    # SET Tags
+    # SET Tags of item
 
     def set_item_tags(self, item, tags):
-        pass
+        #TODO where to set them
+        self.tagDB.set_item_tags(item, tags)
+        self.tagDB.set_item_tags(item, tags)
 
     def set_tag_tags(self, tag, tags):
-        pass
+        self.tagDB.set_tag_tags(tag, tags)
     
     def set_file_tags(self, file, tags):
-        pass
+        self.fileDB.set_file_tags(file, tags)
     
     def set_folder_tags(self, folder, tags):
-        pass
+        self.fileDB.set_folder_tags(folder, tags)
 
    # ADD items
 
     def add_tag(self, tag, tags = []):
-        pass
+        self.tagDB.add_tag(tag, tags)
 
     def add_file(self, file, tags = []):
-        pass
+        self.fileDB.add_file(file, tags)
 
     def add_folder(self, folder, tags = []):
-        pass
+        self.fileDB.add_folder(folder, tags)
 
 ## SEARCH
     # SEARCH helpers
@@ -107,7 +110,7 @@ class Core():
         return []
 
     # List Tags with querry
-
+    #TODO dont do it now
     def list_tags_with_querry(self, querry):
         return []
 
@@ -115,25 +118,26 @@ class Core():
 
     # LIST all items
 
+
     def list_all_files(self):
-        return []
+        return self.fileDB.list_all_files()
 
     def list_all_folders(self):
-        return []
+        return self.fileDB.list_all_folder()
 
     def list_all_tags(self):
-        return []
+        return self.tagDB.list_all_tags()
 
-    # LIST exact items
+    # LIST items that match exactly with the tags
     
     def list_exact_files(self, tags):
-        return []
+        return self.fileDB.list_exact_files(tags)
 
     def list_exact_folders(self, tags):
-        return []
+        return self.fileDB.list_exact_folders(tags)
 
     def list_exact_tags(self, tags):
-        return []
+        return self.tagDB.list_exact_tags(tags)
 
     # MODULE stuff
     def list_all_modules(self):
