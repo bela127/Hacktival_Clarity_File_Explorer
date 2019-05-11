@@ -1,4 +1,4 @@
-#!/media/bhb/Data/cloud/Code/Git/Hacktival_Clarity_File_Explorer/src/Clarity_File_Explorer/venv/bin/python3
+#!/media/bhb/Data/cloud/Code/Git/Hacktival_Clarity_File_Explorer/src/clarity/venv/bin/python3
 
 # -*- coding: utf-8 -*-
 import re

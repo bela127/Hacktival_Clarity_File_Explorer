@@ -1,6 +1,6 @@
 
 import cmd, sys
-from  Core.core import core
+from Clarity_File_Explorer.Core import Core
 
 
 def main():

@@ -29,7 +29,7 @@ end
 # unset irrelevant variables
 deactivate nondestructive
 
-set -gx VIRTUAL_ENV "/media/bhb/Data/cloud/Code/Git/Hacktival_Clarity_File_Explorer/src/Clarity_File_Explorer/venv"
+set -gx VIRTUAL_ENV "/media/bhb/Data/cloud/Code/Git/Hacktival_Clarity_File_Explorer/src/clarity/venv"
 
 set -gx _OLD_VIRTUAL_PATH $PATH
 set -gx PATH "$VIRTUAL_ENV/bin" $PATH
