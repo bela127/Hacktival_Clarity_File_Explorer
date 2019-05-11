@@ -1,5 +1,6 @@
 import file_db
 from tag_item import Tag_item
+from item import Item
 
 class Tag_db():
     def __init__(self):
@@ -31,13 +32,29 @@ class Tag_db():
         return None
     
     # gets a name and a taglist and creates a tag
-    def add_tag(self, name, directory, tags):
+    def add_tag(self, name, tags):
         new_tag = Tag_item(name, tags)
         self.tags.append(new_tag)
     
-    # gets an tag_item and returns a list of tags that are related to this item
-    def get_tags(self, item: Tag_item):
+    # gets an item and returns a list of tags of this item
+    def list_tags_of_item(self, item: Item):
         for i in self.tags:
-            if item == self.tags[i]:
+            if item.name == self.tags[i].name:
                 return self.tags[i].tag_list
         return[]
+
+    # returns all existing tags
+    def list_all_tags(self):
+        return self.tags
+
+    # gets a list of tags and returns all folders where these tags are used 
+    def list_folders_with_tags(self, tag_list: [tag_item]):
+        temp_tag_list: [folder_item] = []
+        for j in self.tags:
+            for i in tag_list:
+                if tag_list[i].name == self.tags[j].name:
+                    if temp_tag_list == []:
+                        temp_tag_list == self.tags[j].
+
+    
+    
