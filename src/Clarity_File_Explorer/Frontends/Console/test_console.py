@@ -1,6 +1,6 @@
 
 import cmd, sys
-from turtle import *
+from ...Core.core import core
 
 
 def main():
@@ -44,6 +44,7 @@ class Test_console(cmd.Cmd):
     # List Tags with text
 
     def do_list_tags_with_text(self, args):
+
         pass
     
     def do_list_tags_start_with_text(self, args):
@@ -159,10 +160,29 @@ class Test_console(cmd.Cmd):
         if self.file and 'playback' not in line:
             print(line, file=self.file)
         return line
+
     def close(self):
-        if self.file:
-            self.file.close()
-            self.file = None
+        pass
+
+    def default(self, line):
+        print("The Command is not jet known: ", line)
+        print("The Command is not jet known: ", line)
+
+    def completedefault(self, text, line, begidx, endidx):
+        print("used to complete empty lines")
+        print(text, line, begidx, endidx)
+        return []
+
+    def preloop(self):
+        print("Clarity Input >> ",end="")
+
+    def postcmd(self, stop, line):
+        print()
+        print("Clarity Input >> ",end="")
+
+    def postloop(self):
+        print("good by")
+
 
 def parse(arg):
     'Convert a series of zero or more numbers to an argument tuple'
