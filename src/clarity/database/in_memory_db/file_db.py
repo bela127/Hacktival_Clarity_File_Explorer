@@ -16,12 +16,7 @@ class File_db():
                     if tag_list[j] in self.stor_items[i].tag:
                         continue
                     else:
-<<<<<<< HEAD
-                        var = Folder_item(None,None,None)
-                        if type(self.stor_items[i]) == type(var):
-=======
                         if type(self.stor_items[i]) == type(Folder_item):
->>>>>>> dev
                             tag_list[j].used_in_folde_item.append(item)
                         else:
                             tag_list[j].used_in_file_item.append(item)
