@@ -8,6 +8,8 @@ def main():
 class Core():
 
     def __init__(self):
+        self.last_tag = root_tag
+        self.current_tags = [root_tag]
         pass
 
     def run(self):
@@ -95,7 +97,7 @@ class Core():
         return []
 
     def get_last_tag(self):
-        return tag
+        return self.last_tag
 
     def change_search_tag(self, orginal_tag, new_tag):
         pass
