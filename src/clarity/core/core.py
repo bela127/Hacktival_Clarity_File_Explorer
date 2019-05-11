@@ -1,3 +1,6 @@
+import clarity.database.in_memory_db.file_db as fd
+import clarity.database.in_memory_db.tag_db as td
+
 if __name__ == "__main__":
     main()
 
@@ -18,6 +21,7 @@ class Core():
     # List Tags with text
     
     def list_tags_start_with_text(self, text):
+        td.
         return []
     
     def list_tags_with_text(self, text):
