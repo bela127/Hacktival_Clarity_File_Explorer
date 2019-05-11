@@ -2,7 +2,7 @@ if __name__ == "__main__":
     main()
 
 def main():
-    c = core()
+    c = Core()
     c.run()
 
 class Core():

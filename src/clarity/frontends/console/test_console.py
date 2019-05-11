@@ -7,12 +7,13 @@ def main():
     Test_console().cmdloop()
 
 class Test_console(cmd.Cmd):
-    intro = 'Welcome to the turtle shell.   Type help or ? to list commands.\n'
-    prompt = '(turtle) '
+    
     file = None
 
     def __init__(self):
-        pass
+        cmd.Cmd.__init__(self)
+        self.intro = 'Welcome to Clarity   Type help or ? to list commands.\n'
+        self.prompt = 'Clarity Input >> '
 
     # ----- basic function commands -----
     def do_help(self, arg):
@@ -177,11 +178,11 @@ class Test_console(cmd.Cmd):
         return []
 
     def preloop(self):
-        print("Clarity Input >> ",end="")
+        print("Additional text befor start: ",end="")
 
     def postcmd(self, stop, line):
         print()
-        print("Clarity Input >> ",end="")
+        print("Additional text after command >> ",end="")
 
     def postloop(self):
         print("good by")
