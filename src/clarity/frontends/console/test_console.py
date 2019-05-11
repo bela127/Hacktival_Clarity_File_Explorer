@@ -1,6 +1,6 @@
 
 import cmd, sys
-import clarity.core.core
+from clarity.core.core import Core
 
 
 def main():
@@ -14,6 +14,7 @@ class Test_console(cmd.Cmd):
         cmd.Cmd.__init__(self)
         self.intro = 'Welcome to Clarity   Type help or ? to list commands.\n'
         self.prompt = 'Clarity Input >> '
+        self.core = Core()
 
     # ----- basic function commands -----
     def do_help(self, arg):
@@ -48,10 +49,11 @@ class Test_console(cmd.Cmd):
     # List Tags with text
 
     def do_list_tags_with_text(self, args):
-
+        self.core.list_tags_contain(args)
         pass
     
     def do_list_tags_start_with_text(self, args):
+        self.core.list_tags_start_with(args)
         pass
 
     # List Tags with querry
