@@ -24,9 +24,6 @@ class Core():
         return []
 
      # LIST items with tags
-    
-    def list_items_with_tags(self, tags):
-        return []
 
     def list_tags_with_tags(self, tags):
         return []
@@ -35,6 +32,9 @@ class Core():
         return []
 
     def list_folders_with_tags(self, tags):
+        return []
+
+    def list_storage_items_with_tags(self, tags):
         return []
 
       # LIST Tags of item
@@ -74,20 +74,6 @@ class Core():
         pass
 
     def add_folder(self, folder, tags = []):
-        pass
-
-    #-------
-
-    def index_item(self, name, directory, tags):
-        pass
-    
-    def index_file(self, name, directory, tags):
-        pass
-
-    def index_folder(self, name, directory, tags):
-        pass
-
-    def create_tag(self, name, tags):
         pass
 
 ## SEARCH
