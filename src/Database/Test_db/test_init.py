@@ -1,18 +1,9 @@
-import sqlite3
+import persistent
 
-class Test_init:
-    # Öffnen von Datenbank
-    db = sqlite3.connect("test_db.db")
-    cursor = db.cursor()
-    # Kommando
-    sql_command = """
-    CREATE TABLE employee ( 
-    id INTEGER PRIMARY KEY, 
-    fname VARCHAR(20), 
-    lname VARCHAR(30));"""
-    # Ausführen        
-    cursor.execute(sql_command)
-    # Speichern
-    db.commit()
-    # Schließen
-    db.close()
+class Tags(persistent.Persistent):
+    def __init__(self, name, tag_list):
+        self.name = name
+        self.tag_list = tag_list
+        self.used_in_item = []
+
+    
