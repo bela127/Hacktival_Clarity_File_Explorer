@@ -1,6 +1,6 @@
 
 import cmd, sys
-from Clarity_File_Explorer.Core import Core
+import clarity.core.core
 
 
 def main():
@@ -10,6 +10,9 @@ class Test_console(cmd.Cmd):
     intro = 'Welcome to the turtle shell.   Type help or ? to list commands.\n'
     prompt = '(turtle) '
     file = None
+
+    def __init__(self):
+        pass
 
     # ----- basic function commands -----
     def do_help(self, arg):

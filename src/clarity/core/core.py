@@ -5,7 +5,7 @@ def main():
     c = core()
     c.run()
 
-class core():
+class Core():
 
     def __init__(self):
         pass
