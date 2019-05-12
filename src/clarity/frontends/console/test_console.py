@@ -213,8 +213,7 @@ class Test_console(cmd.Cmd):
 
 
 def parse(arg):
-    'Convert a series of zero or more numbers to an argument tuple'
-    return tuple(map(int, arg.split()))
+    return tuple(arg.split())
 
 if __name__ == "__main__":
     main()

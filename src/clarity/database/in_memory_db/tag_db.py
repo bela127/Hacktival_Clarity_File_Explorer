@@ -2,8 +2,8 @@ from clarity.database.in_memory_db.tag_item import Tag_item
 
 class Tag_db():
     def __init__(self):
-        root_tag = Tag_item("root")
-        self.tags: [Tag_item] = [root_tag]      #list of tags
+        self.root_tag = Tag_item("root")
+        self.tags: [Tag_item] = [self.root_tag]      #list of tags
     
     # returns all tags that start with the string text
     def tags_start_with(self, text):
@@ -43,8 +43,8 @@ class Tag_db():
 
     # gets a list of tags and returns all folders where these tags are used 
     def list_folders_with_tags(self, tag_list):
-        folders = [folder for tag in self.tags for folder in tag.used_in_folder_items]
-        folders = list(set(folders))
+        folders = set([folder for tag in self.tags for folder in tag.used_in_folder_items])
+        folders = list(folders)
         return folders
 
     def list_files_with_tags(self, tag_list):
