@@ -29,6 +29,8 @@ class Tag_db():
     def add_tag(self, name, tags):
         new_tag = Tag_item(name, tags)
         self.tags.append(new_tag)
+        for tag in tags:
+            self.return_tag(tag.name).used_in_tag_items.append(new_tag)
     
     # gets an item and returns a list of tags of this item
     def list_tags_of_item(self, item):
