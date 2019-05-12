@@ -41,7 +41,8 @@ class Core():
     
     def list_tags_with_text(self, text):
         tags = self.tagDB.tags_contain(text)
-        tags = sorted(tags,key=lambda tag: len(tag.used_in_folder_items) + len(tag.used_in_file_items))
+        tags = set(tags) - set(self.current_tags)
+        tags = set(sorted(tags,key=lambda tag: len(tag.used_in_folder_items) + len(tag.used_in_file_items)))
         return tags
 
      # LIST items with tags
