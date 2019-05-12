@@ -21,9 +21,9 @@ class Core():
         init.init_tags(self.tagDB)
         init.init_storage_items(self.fileDB, self.tagDB)
 
-        root_tag = self.tagDB.return_tag("root")
-        self.last_tag = root_tag
-        self.current_tags = [root_tag]
+        
+        self.last_tag = None
+        self.current_tags = []
         pass
 
     def run(self):
