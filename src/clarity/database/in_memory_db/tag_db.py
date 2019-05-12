@@ -43,17 +43,17 @@ class Tag_db():
 
     # gets a list of tags and returns all folders where these tags are used 
     def list_folders_with_tags(self, tag_list):
-        folders = [folder for folder in tag.used_in_folder_items for tag in self.tags]
+        folders = [folder for tag in self.tags for folder in tag.used_in_folder_items]
         folders = list(set(folders))
         return folders
 
     def list_files_with_tags(self, tag_list):
-        files = [file for file in tag.used_in_file_items for tag in self.tags]
+        files = [file for tag in self.tags for file in tag.used_in_file_items]
         files = list(set(files))
         return files
 
     def list_tags_with_tags(self, tag_list):
-        tags = [tag for tag in tag.used_in_tag_items for tag in self.tags]
+        tags = [tag for tag in self.tags for tag in tag.used_in_tag_items]
         tags = list(set(tags))
         return tags
 
