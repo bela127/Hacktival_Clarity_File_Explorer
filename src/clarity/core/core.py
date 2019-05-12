@@ -1,3 +1,4 @@
+import random
 import clarity.database.in_memory_db.file_db as fd
 import clarity.database.in_memory_db.tag_db as td
 from clarity.database.in_memory_db.tag_item import Tag_item
@@ -152,6 +153,10 @@ class Core():
     
     def list_all_tags(self):
         return self.tagDB.list_all_tags()
+    
+    # return n random tags
+    def list_random_tags(self, n):
+        return random.sample(self.list_all_tags(), n)
 
     # LIST items that match exactly with the tags
     

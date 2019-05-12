@@ -70,6 +70,17 @@ class Tag_db():
         tags = tag.tag_list + tag_list
         tag.tag_list = list(set(tags))
 
+    # removes a tag from the tag-list 
+    def remove_tag(self, tag):
+        for foi in tag.used_in_folder_items:
+            foi.tag_list.remove(tag)
+        for fii in tag.used_in_file_items:
+            fii.tag_list.remove(tag)
+        for tai in tag.used_in_tag_items:
+            tai.tag_list.remove(tag)
+        
+        self.root_tag.used_in_tag_items.remove(tag)
+    
 
     
     
