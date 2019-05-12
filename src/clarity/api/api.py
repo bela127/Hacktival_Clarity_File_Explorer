@@ -139,3 +139,6 @@ class API:
     
     def remove_tag_from_search(self, tag):
         self._core.remove_tag_from_search(tag)
+    
+    def list_random_tags(self, n):
+        self._core.list_random_tags(n)
