@@ -103,6 +103,7 @@ class Main_View (QWidget):
         def onOpenFile(current):
             text = current.text()
             file = '../files/' + text
+            print(file)
 
             import webbrowser
             webbrowser.open(file)
