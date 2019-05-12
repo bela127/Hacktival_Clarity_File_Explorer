@@ -3,6 +3,7 @@ import clarity.database.in_memory_db.tag_db as td
 from clarity.database.in_memory_db.tag_item import Tag_item
 from clarity.database.in_memory_db.file_item import File_item
 from clarity.database.in_memory_db.folder_item import Folder_item
+from clarity.database.in_memory_db.initialize_data import Initialize_data
 
 if __name__ == "__main__":
     main()
@@ -16,6 +17,9 @@ class Core():
     def __init__(self):
         self.tagDB = td.Tag_db()
         self.fileDB = fd.File_db()
+        init = Initialize_data()
+        init.init_tags(self.tagDB)
+        init.init_storage_items(self.fileDB)
 
         root_tag = self.tagDB.return_tag("root")
         self.last_tag = root_tag

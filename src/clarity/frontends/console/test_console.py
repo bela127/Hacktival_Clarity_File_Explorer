@@ -109,16 +109,20 @@ class Test_console(cmd.Cmd):
 
     # LIST items with tags
 
-    def do_list_items_with_tags(self, args):
-        items = self.core.list_items_with_tags(tags)
-
     def do_list_tags_with_tags(self, args):
+        tokens = parse(args)
+        tags = [self.core.get_tag_by_name(name) for name in tokens[0:]]
         tags = self.core.list_tags_with_tags(tags)
+        print(tags)
 
     def do_list_files_with_tags(self, args):
+        tokens = parse(args)
+        tags = [self.core.get_tag_by_name(name) for name in tokens[0:]]
         files = self.core.list_files_with_tags(tags)
     
     def do_list_folders_with_tags(self, args):
+        tokens = parse(args)
+        tags = [self.core.get_tag_by_name(name) for name in tokens[0:]]
         folders = self.core.list_folders_with_tags(tags)
 
     # LIST items with tag
