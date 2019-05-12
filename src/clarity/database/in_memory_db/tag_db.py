@@ -16,12 +16,7 @@ class Tag_db():
 
     # returns all tags that contain the string text
     def tags_contain(self, text):
-        tag_list = []
-        for tag in self.tags:
-            if tag.name.contain(text):
-                tag_list.append(tag)
-    
-        return tag_list
+        return [tag for tag in self.tags if text in tag.name]
 
     # returns a tag
     def tag(self, name):
