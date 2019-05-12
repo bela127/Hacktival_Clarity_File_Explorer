@@ -5,8 +5,7 @@ from clarity.database.in_memory_db.file_item import File_item
 from clarity.database.in_memory_db.folder_item import Folder_item
 from clarity.database.in_memory_db.initialize_data import Initialize_data
 
-if __name__ == "__main__":
-    main()
+
 
 def main():
     c = Core()
@@ -164,3 +163,6 @@ class Core():
     # MODULE stuff
     def list_all_modules(self):
         return []
+
+if __name__ == "__main__":
+    main()

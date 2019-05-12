@@ -11,3 +11,6 @@ class Tag_item(Item):
         self.used_in_folder_items = []   #list of folder_items
         self.used_in_file_items = []   #list of file_items
         self.used_in_tag_items = []   #list of tag_items
+
+    def __repr__(self):
+        return self.name

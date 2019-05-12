@@ -4,4 +4,4 @@ import typing
 class File_item(Storage_item):
 
     def __init__(self, name: str, directory: str, tag_list):
-        super().__init__(self, name, directory, tag_list)
+        super().__init__(name, directory, tag_list)
