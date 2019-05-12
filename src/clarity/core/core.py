@@ -123,21 +123,24 @@ class Core():
         return self.fileDB.list_all_files()
 
     def list_all_folders(self):
-        return self.fileDB.list_all_folder()
-
+        return self.fileDB.list_all_folders()
+    
     def list_all_tags(self):
         return self.tagDB.list_all_tags()
 
     # LIST items that match exactly with the tags
     
     def list_exact_files(self, tags):
-        return self.fileDB.list_exact_files(tags)
+        files = [file for file in self.tagDB.list_files_with_tags(tags) if len(file.tag_list) == len(tags)]
+        return files
 
     def list_exact_folders(self, tags):
-        return self.fileDB.list_exact_folders(tags)
+        folders = [folder for folder in self.tagDB.list_folders_with_tags(tags) if len(folder.tag_list) == len(tags)]
+        return folders
 
     def list_exact_tags(self, tags):
-        return self.tagDB.list_exact_tags(tags)
+        tags = [tag for tag in self.tagDB.list_tags_with_tags(tags) if len(tag.tag_list) == len(tags)]
+        return tags
 
     # MODULE stuff
     def list_all_modules(self):
