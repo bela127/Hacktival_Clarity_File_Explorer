@@ -6,7 +6,7 @@ Created on Sat May 11 15:50:17 2019
 """
 
 from PyQt5.QtCore import Qt
-from PyQt5.QtWidgets import QCheckBox,QVBoxLayout,QGroupBox,QHBoxLayout,QScrollArea, QWidget, QListWidget, QLineEdit, QGridLayout
+from PyQt5.QtWidgets import QVBoxLayout,QHBoxLayout,QScrollArea, QWidget, QListWidget, QLineEdit, QGridLayout
 from inputwithddanddelete import InputItemWithDelete
 from FlowLayout import FlowLayout
 
@@ -98,7 +98,7 @@ class Main_View (QWidget):
         
         """ Results """
         self.results = QListWidget(self)
-        self.results.addItem('Results here')
+        #self.results.addItem('Results here')
         #self.results.setFixedWidth(600)
 
         def onOpenFile(current):
@@ -130,18 +130,15 @@ class Main_View (QWidget):
         return item
     
     def refresh_results(self):
-        try:
-            tags = self.api.list_current_tags()
-            items = self.api.list_storage_items_with_tags(tags)
-            items = [item.name for item in items]
 
-            print('Refresh! -> ' + str(items))
+        tags = self.api.list_current_tags()
+        items = self.api.list_storage_items_with_tags(tags)
+        items = [item.name for item in items]
 
-            self.results.clear()
-            self.results.addItems(items)
-        
-        except:
-            pass
+        print('Refresh! -> ' + str(items))
+
+        self.results.clear()
+        self.results.addItems(items)
     
 
     def refresh_suggestions(self, text = ''):

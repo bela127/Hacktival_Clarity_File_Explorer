@@ -51,12 +51,12 @@ class App_View (QtWidgets.QWidget):
         suggestions = [tag.name for tag in api.list_all_tags() if tag]
         area.suggestions.addItems(suggestions)
 
-        def onSearchInput(text):
+        def onSearchTextEdit(text):
             area.suggestions.clear()
             suggestions = [tag.name for tag in api.list_tags_with_text(text)]
             area.suggestions.addItems(suggestions)
-        
-        area.search_input.textEdited.connect(onSearchInput)
+         
+        area.search_input.textEdited.connect(onSearchTextEdit)
 
 
 if __name__ == '__main__':
