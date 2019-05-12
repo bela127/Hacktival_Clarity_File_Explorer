@@ -43,7 +43,7 @@ class File_db():
         new_file = File_item(name, directory, tags)
         self.stor_items.append(new_file)
     
-    # gets a name and a taglist and creates a file
+    # gets a name and a taglist and creates a folder
     def add_folder(self, name, directory, tags):
         new_folder = Folder_item(name, directory, tags)
         self.stor_items.append(new_folder)

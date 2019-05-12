@@ -19,10 +19,10 @@ class Tag_db():
         return [tag for tag in self.tags if text in tag.name]
 
     # returns a tag
-    def tag(self, name):
+    def return_tag(self, name):
         for tag in self.tags:
             if name == tag.name:
-                return self.tag
+                return tag
         return None
     
     # gets a name and a taglist and creates a tag
@@ -64,6 +64,7 @@ class Tag_db():
 
     # gets a tag and a taglist and adds the tags to the tag
     def set_tag_tags(self, tag: Tag_item, tag_list: [Tag_item]):
+        tag = self.return_tag(tag.name)
         tags = tag.tag_list + tag_list
         tag.tag_list = list(set(tags))
 

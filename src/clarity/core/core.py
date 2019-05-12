@@ -17,7 +17,7 @@ class Core():
         self.tagDB = td.Tag_db()
         self.fileDB = fd.File_db()
 
-        root_tag = self.tagDB.tag("root")
+        root_tag = self.tagDB.return_tag("root")
         self.last_tag = root_tag
         self.current_tags = [root_tag]
         pass
@@ -26,6 +26,9 @@ class Core():
         pass
     
     # List Tags with text
+
+    def get_tag_by_name(self, name):
+        return self.tagDB.retu
     
     def list_tags_start_with_text(self, text):
         return self.tagDB.tags_start_with(text)
@@ -75,7 +78,7 @@ class Core():
    # ADD items
 
     def add_tag(self, tag: str, tags):
-        self.tagDB.add_tag(tag, tags)
+        self.tagDB.create_tag(tag, tags)
 
     def add_file(self, file: str, directory: str, tags = []):
         self.fileDB.add_file(file, directory, tags)
@@ -85,6 +88,9 @@ class Core():
 
 ## SEARCH
     # SEARCH helpers
+
+    def add_tag_to_search(self, tag):
+        self.current_tags.append(tag)
 
     def list_current_tags(self):
         return self.current_tags
