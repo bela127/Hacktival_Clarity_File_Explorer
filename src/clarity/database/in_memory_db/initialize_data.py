@@ -12,7 +12,6 @@ class Initialize_data():
         td.add_tag("water", [])
         td.add_tag("ocean", [td.return_tag("water")])
         td.add_tag("picture", [])
-        td.add_tag("2018", [])
         td.add_tag("germany", [])
         ger_tag = td.return_tag("germany")
         td.add_tag("france", [])
