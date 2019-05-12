@@ -45,7 +45,7 @@ class Core():
         return self.tagDB.list_folders_with_tags(tags)
 
     def list_storage_items_with_tags(self, tags):
-        return self.tagDB.list_storage_items_with_tags(tags)
+        return self.tagDB.list_folders_with_tags(tags) + self.tagDB.list_files_with_tags(tags)
 
       # LIST Tags of item
 
@@ -65,7 +65,7 @@ class Core():
 
     def set_tag_tags(self, tag, tags):
         self.tagDB.set_tag_tags(tag, tags)
-    
+        
     def set_file_tags(self, file, tags):
         self.fileDB.set_file_tags(file, tags)
     
@@ -74,14 +74,14 @@ class Core():
 
    # ADD items
 
-    def add_tag(self, tag, tags = []):
+    def add_tag(self, tag: str, tags):
         self.tagDB.add_tag(tag, tags)
 
-    def add_file(self, file, tags = []):
-        self.fileDB.add_file(file, tags)
+    def add_file(self, file: str, directory: str, tags = []):
+        self.fileDB.add_file(file, directory, tags)
 
-    def add_folder(self, folder, tags = []):
-        self.fileDB.add_folder(folder, tags)
+    def add_folder(self, folder: str, directory: str, tags = []):
+        self.fileDB.add_folder(folder, directory, tags)
 
 ## SEARCH
     # SEARCH helpers
