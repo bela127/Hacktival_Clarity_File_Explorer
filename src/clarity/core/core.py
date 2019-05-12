@@ -28,7 +28,7 @@ class Core():
     # List Tags with text
 
     def get_tag_by_name(self, name):
-        return self.tagDB.retu
+        return self.tagDB.return_tag(name)
     
     def list_tags_start_with_text(self, text):
         return self.tagDB.tags_start_with(text)
@@ -78,7 +78,7 @@ class Core():
    # ADD items
 
     def add_tag(self, tag: str, tags):
-        self.tagDB.create_tag(tag, tags)
+        self.tagDB.add_tag(tag, tags)
 
     def add_file(self, file: str, directory: str, tags = []):
         self.fileDB.add_file(file, directory, tags)
@@ -88,6 +88,9 @@ class Core():
 
 ## SEARCH
     # SEARCH helpers
+
+    def remove_tag_from_search(self, tag):
+        self.current_tags.remove(tag)
 
     def add_tag_to_search(self, tag):
         self.current_tags.append(tag)
@@ -99,9 +102,13 @@ class Core():
         return self.last_tag
 
     def change_search_tag(self, tag_to_change, new_tag):
-        pass
+        self.current_tags.remove(tag_to_change)
+        self.current_tags.append(new_tag)
+        
 
     def replace_search_tag(self, tag_to_replace, new_tag):
+        self.current_tags.remove(tag_to_change)
+        self.current_tags.append(new_tag)
         pass
 
     # LIST predictions
