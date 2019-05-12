@@ -155,7 +155,7 @@ class Core():
         return self.tagDB.list_all_tags()
     
     # return n random tags
-    def list_random_tags(self, n):^
+    def list_random_tags(self, n):
         sample = random.sample(set(self.list_all_tags()), n)
         return sample
 
