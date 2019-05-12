@@ -6,8 +6,8 @@ Created on Sat May 11 15:50:17 2019
 """
 
 from PyQt5.QtCore import Qt
-from PyQt5.QtWidgets import QWidget, QListWidget, QLineEdit, QGridLayout
-from inputwithddanddelete import InputWithDropDownAndDelete
+from PyQt5.QtWidgets import QCheckBox,QVBoxLayout,QGroupBox,QHBoxLayout,QScrollArea, QWidget, QListWidget, QLineEdit, QGridLayout
+from inputwithddanddelete import InputItemWithDelete
 
 class Search_Input (QLineEdit):
     
@@ -23,12 +23,11 @@ class Search_Input (QLineEdit):
         if e.key() == Qt.Key_Left and self.cursorPosition() == 0:
             self.parent().tags_bar.setFocus()
         
-        super().keyPressEvent(e)
-    
+        super().keyPressEvent(e)  
     
 class Main_View (QWidget):
     
-    def __init__(self, parent):
+    def __init__(self, parent, api):
         
         super().__init__(parent)
         
@@ -37,7 +36,17 @@ class Main_View (QWidget):
         
         
         """ Tags Bar """
-        self.tags_bar = InputWithDropDownAndDelete(self)
+        self.scrollarea = QScrollArea(self)
+        self.scrollarea.setFixedHeight(120)
+        self.scrollarea.setWidgetResizable(True)
+
+        self.search_history_widget = QWidget()
+        self.scrollarea.setWidget(self.search_history_widget)
+        self.search_history_layout = QHBoxLayout(self.search_history_widget)
+
+        
+        
+        #self.layout_SArea = QVBoxLayout(widget)
         #self.right_panel = Right_Panel(self)
         
         """ Search Input Text """
@@ -52,12 +61,6 @@ class Main_View (QWidget):
         
         """ Suggestions """
         self.suggestions = QListWidget(self)
-        self.suggestions.addItems(['#Images',
-                                   '#Holiday',
-                                   '#Summer',
-                                   '#Surfing',
-                                   '#short',
-                                   '#looooooooong'])
         self.suggestions.setFixedWidth(self.search_input.width())
         #self.suggestions.setSelection(0)
         self.suggestions.setStyleSheet("""
@@ -67,18 +70,23 @@ class Main_View (QWidget):
                                        """)
         
         def onSuggestion(current):
-            self.tags_bar.addItem(current.text())
+            self.search_history_layout.addWidget(self.Item(current.text()))
         
         self.suggestions.itemClicked.connect(onSuggestion)
         
         """ Results """
         self.results = QListWidget(self)
         self.results.addItem('Results here')
-        self.results.setFixedWidth(600)
+        #self.results.setFixedWidth(600)
         
-        layout.setColumnStretch(1, 2)
-        layout.setColumnStretch(2, 2)
-        layout.addWidget(self.tags_bar, 0, 0)
+        #layout.setColumnStretch(1, 2)
+        #layout.setColumnStretch(2, 2)
+        layout.addWidget(self.scrollarea, 0, 0)
         layout.addWidget(self.search_input, 0, 1)
         layout.addWidget(self.results, 1, 0)
         layout.addWidget(self.suggestions, 1, 1)
+    
+    def Item(self, text):
+        item = InputItemWithDelete(self)
+        item.setText(text)
+        return item

@@ -54,7 +54,8 @@ class InputItemWithDelete (QFrame):
         
     
     def onCross(self):
-        self.parent().remove(self)
+        #self.parent().removeWidget(self)
+        self.setParent(None)
     
     
     def setText(self, value):
@@ -62,7 +63,7 @@ class InputItemWithDelete (QFrame):
     
 
 
-class InputWithDropDownAndDelete (QScrollArea):
+class SearchHistory (QFrame):
     
     def __init__(self, parent):
         
@@ -70,7 +71,7 @@ class InputWithDropDownAndDelete (QScrollArea):
         
         self.layout = FlowLayout()
         self.setLayout(self.layout)
-        self.setFixedHeight(60)
+        self.setFixedHeight(100)
         
         self._items = []
     

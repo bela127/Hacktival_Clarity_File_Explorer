@@ -77,26 +77,35 @@ class Test_console(cmd.Cmd):
     
     def set_file_tags(self, args):
         tokens = parse(args)
-        file = Tag_item(tokens[0])
-        tags = [self.core.get_tag_by_name(name) for name in tokens[1:]]
+        file = File_item(tokens[0], tokens[1], [])
+        tags = [self.core.get_tag_by_name(name) for name in tokens[2:]]
         self.core.set_file_tags(file, tags)
     
     def set_folder_tags(self, args):
         tokens = parse(args)
-        folder = Tag_item(tokens[0])
-        tags = [self.core.get_tag_by_name(name) for name in tokens[1:]]
+        folder = Folder_item(tokens[0], tokens[1], [])
+        tags = [self.core.get_tag_by_name(name) for name in tokens[2:]]
         self.core.set_folder_tags(folder, tags)
 
     # ADD items
     
     def do_add_tag(self, args):
-        self.core.add_tag(tag, tags = [])
+        tokens = parse(args)
+        tag = Tag_item(tokens[0])
+        tags = [self.core.get_tag_by_name(name) for name in tokens[1:]]
+        self.core.add_tag(tag, tags)
 
     def do_add_file(self, args):
-        self.core.add_file(file, tags = [])
+        tokens = parse(args)
+        file = File_item(tokens[0], tokens[1], [])
+        tags = [self.core.get_tag_by_name(name) for name in tokens[2:]]
+        self.core.add_file(file, tags)
 
     def do_add_folder(self, args):
-        self.core.add_folder(folder, tags = [])
+        tokens = parse(args)
+        folder = Folder_item(tokens[0], tokens[1], [])
+        tags = [self.core.get_tag_by_name(name) for name in tokens[2:]]
+        self.core.add_folder(folder, tags)
 
     # LIST items with tags
 

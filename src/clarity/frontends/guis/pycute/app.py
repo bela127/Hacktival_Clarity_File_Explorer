@@ -14,29 +14,28 @@ from view import Main_View
 api = API()
 
 
-class App_View (QtWidgets.QMainWindow):
+class App_View (QtWidgets.QWidget):
     
     def __init__(self):
-        
         super().__init__()
 
-        self.setFixedHeight(500)
-        self.setFixedWidth(1000)
+        #self.setFixedHeight(500)
+        #self.setFixedWidth(1000)
         
         layout = QtWidgets.QGridLayout()
-        layout.setColumnStretch(1, 2)
+        #layout.setColumnStretch(1, 2)
         self.setLayout(layout)
         
         """ Burger Menu """
         left_menu = QtWidgets.QListWidget(self)
         left_menu.addItems(['Files', 'Favorites', 'Images', 'Music', 'Movies'])
-        left_menu.setFixedWidth(150)
-        layout.addWidget(left_menu)
+        left_menu.setFixedWidth(200)
+        layout.addWidget(left_menu, 0, 0)
         
         
         """ Area to contain Main View """
-        area = Main_View(self)
-        layout.addWidget(area)
+        area = Main_View(self, api)
+        layout.addWidget(area, 0,1)
         
         #app.setStyle('Fusion')
         self.setStyleSheet("""
@@ -49,6 +48,16 @@ class App_View (QtWidgets.QMainWindow):
                           border-radius: 2px;
                           background: white
                           """)
+        
+        suggestions = [tag.name for tag in api.list_all_tags() if tag]
+        area.suggestions.addItems(suggestions)
+
+        def onSearchInput(text):
+            area.suggestions.clear()
+            suggestions = [tag.name for tag in api.list_tags_with_text(text)]
+            area.suggestions.addItems(suggestions)
+        
+        area.search_input.textEdited.connect(onSearchInput)
 
 
 if __name__ == '__main__':
