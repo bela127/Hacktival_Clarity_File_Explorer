@@ -45,23 +45,49 @@ class Tag_db():
 
     # gets a list of tags and returns all folders where these tags are used 
     def list_folders_with_tags(self, tag_list):
-        folders = [folder for tag in tag_list for folder in tag.used_in_folder_items]
-        folders = list(set(folders))
-        return folders
+        remaining_folders = []
+
+        if len(tag_list) > 0:
+            vergleichs_tag = self.return_tag(tag_list[0].name)
+            remaining_folders = vergleichs_tag.used_in_folder_items
+            for tag in tag_list[1:]:
+                vergleichs_tag = self.return_tag(tag.name)
+                remaining_folders = [ selected_folder for selected_folder in remaining_folders if vergleichs_tag in selected_folder.tag_list]
+        
+        remaining_folders = sorted(remaining_folders,key=lambda tag: len(tag.used_in_folder_items) + len(tag.used_in_file_items))
+        return remaining_folders
 
     def list_files_with_tags(self, tag_list):
-        files = [file for tag in tag_list for file in tag.used_in_file_items]
-        files = list(set(files))
-        return files
+        remaining_files = []
+
+        if len(tag_list) > 0:
+            vergleichs_tag = self.return_tag(tag_list[0].name)
+            remaining_files = vergleichs_tag.used_in_file_items
+            for tag in tag_list[1:]:
+                vergleichs_tag = self.return_tag(tag.name)
+                remaining_tags = [ selected_file for selected_file in remaining_files if vergleichs_tag in selected_file.tag_list]
+        
+        remaining_files = sorted(remaining_files,key=lambda tag: len(tag.used_in_folder_items) + len(tag.used_in_file_items))
+        return remaining_files
 
     def list_tags_with_tags(self, tag_list):
-        tags = [tag for tag in tag_list for tag in tag.used_in_tag_items]
-        tags = list(set(tags))
-        return tags
+        remaining_tags = []
+
+        if len(tag_list) > 0:
+            vergleichs_tag = self.return_tag(tag_list[0].name)
+            remaining_tags = vergleichs_tag.used_in_tags_items
+            for tag in tag_list[1:]:
+                vergleichs_tag = self.return_tag(tag.name)
+                remaining_tags = [ selected_tag for selected_tag in remaining_tags if vergleichs_tag in selected_tag.tag_list]
+        
+        remaining_tags = sorted(remaining_tags,key=lambda tag: len(tag.used_in_tag_items))
+        return remaining_tags
 
     def list_storage_items_with_tags(self, tag_list: [Tag_item]):
         tags = self.list_files_with_tags(tag_list)
         tags += self.list_folders_with_tags(tag_list)
+        tags = list(set(tags))
+        tags = sorted(tags,key=lambda tag: len(tag.used_in_folder_items) + len(tag.used_in_file_items))
         return tags
 
     # gets a tag and a taglist and adds the tags to the tag
