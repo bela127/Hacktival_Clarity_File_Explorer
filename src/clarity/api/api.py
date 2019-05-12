@@ -5,10 +5,12 @@ Created on Sat May 11 22:28:27 2019
 @author: User
 """
 
+from clarity.core.core import Core
+
 class API:
     
-    def __init__(self, core):
-        self._core = core
+    def __init__(self):
+        self._core = Core()
     
     
     # List Tags with text
@@ -31,7 +33,7 @@ class API:
         return self._core.list_folders_with_tags(tags)
 
     def list_storage_items_with_tags(self, tags):
-        return self._core.list_storage_items_with_tags(self, tags)
+        return self._core.list_storage_items_with_tags(tags)
 
       # LIST Tags of item
 
@@ -48,9 +50,6 @@ class API:
         return self._core.list_tags_of_folder(folder)
     
     # SET Tags
-
-    def set_item_tags(self, item, tags):
-        self._core.set_item_tags(item, tags)
 
     def set_tag_tags(self, tag, tags):
         self._core.set_tag_tags(tag, tags)

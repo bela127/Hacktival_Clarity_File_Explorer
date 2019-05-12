@@ -17,7 +17,7 @@ class Core():
         self.tagDB = td.Tag_db()
         self.fileDB = fd.File_db()
 
-        root_tag = self.tagDB.tag("root")
+        root_tag = self.tagDB.return_tag("root")
         self.last_tag = root_tag
         self.current_tags = [root_tag]
         pass
@@ -78,7 +78,7 @@ class Core():
    # ADD items
 
     def add_tag(self, tag: str, tags):
-        self.tagDB.add_tag(tag, tags)
+        self.tagDB.create_tag(tag, tags)
 
     def add_file(self, file: str, directory: str, tags = []):
         self.fileDB.add_file(file, directory, tags)
@@ -129,21 +129,24 @@ class Core():
         return self.fileDB.list_all_files()
 
     def list_all_folders(self):
-        return self.fileDB.list_all_folder()
-
+        return self.fileDB.list_all_folders()
+    
     def list_all_tags(self):
         return self.tagDB.list_all_tags()
 
     # LIST items that match exactly with the tags
     
     def list_exact_files(self, tags):
-        return self.fileDB.list_exact_files(tags)
+        files = [file for file in self.tagDB.list_files_with_tags(tags) if len(file.tag_list) == len(tags)]
+        return files
 
     def list_exact_folders(self, tags):
-        return self.fileDB.list_exact_folders(tags)
+        folders = [folder for folder in self.tagDB.list_folders_with_tags(tags) if len(folder.tag_list) == len(tags)]
+        return folders
 
     def list_exact_tags(self, tags):
-        return self.tagDB.list_exact_tags(tags)
+        tags = [tag for tag in self.tagDB.list_tags_with_tags(tags) if len(tag.tag_list) == len(tags)]
+        return tags
 
     # MODULE stuff
     def list_all_modules(self):

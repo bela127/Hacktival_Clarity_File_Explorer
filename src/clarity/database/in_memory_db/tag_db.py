@@ -1,5 +1,4 @@
-from tag_item import Tag_item
-from item import Item
+from clarity.database.in_memory_db.tag_item import Tag_item
 
 class Tag_db():
     def __init__(self):
@@ -37,7 +36,7 @@ class Tag_db():
         self.tags.append(new_tag)
     
     # gets an item and returns a list of tags of this item
-    def list_tags_of_item(self, item: Item):
+    def list_tags_of_item(self, item):
         for tag in self.tags:
             if item.name == tag.name:
                 return tag.tag_list
@@ -48,17 +47,17 @@ class Tag_db():
         return self.tags
 
     # gets a list of tags and returns all folders where these tags are used 
-    def list_folders_with_tags(self, tag_list: [Tag_item]):
+    def list_folders_with_tags(self, tag_list):
         folders = [folder for folder in tag.used_in_folder_items for tag in self.tags]
         folders = list(set(folders))
         return folders
 
-    def list_files_with_tags(self, tag_list: [Tag_item]):
+    def list_files_with_tags(self, tag_list):
         files = [file for file in tag.used_in_file_items for tag in self.tags]
         files = list(set(files))
         return files
 
-    def list_tags_with_tags(self, tag_list: [Tag_item]):
+    def list_tags_with_tags(self, tag_list):
         tags = [tag for tag in tag.used_in_tag_items for tag in self.tags]
         tags = list(set(tags))
         return tags
@@ -70,6 +69,7 @@ class Tag_db():
 
     # gets a tag and a taglist and adds the tags to the tag
     def set_tag_tags(self, tag: Tag_item, tag_list: [Tag_item]):
+        tag = self.return_tag(tag.name)
         tags = tag.tag_list + tag_list
         tag.tag_list = list(set(tags))
 

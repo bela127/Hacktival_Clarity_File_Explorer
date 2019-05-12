@@ -1,5 +1,9 @@
 
 import cmd, sys
+from clarity.database.in_memory_db.tag_item import Tag_item
+from clarity.database.in_memory_db.storage_item import Storage_item
+from clarity.database.in_memory_db.folder_item import Folder_item
+from clarity.database.in_memory_db.file_item import File_item
 from clarity.core.core import Core
 
 
@@ -65,16 +69,22 @@ class Test_console(cmd.Cmd):
 
     # SET Tags
 
-    def set_item_tags(self, args):
-        self.core.set_item_tags(item, tags)
-
     def set_tag_tags(self, args):
+        tokens = parse(args)
+        tag = Tag_item(tokens[0])
+        tags = [self.core.get_tag_by_name(name) for name in tokens[1:]]
         self.core.set_tag_tags(tag, tags)
     
     def set_file_tags(self, args):
+        tokens = parse(args)
+        file = Tag_item(tokens[0])
+        tags = [self.core.get_tag_by_name(name) for name in tokens[1:]]
         self.core.set_file_tags(file, tags)
     
     def set_folder_tags(self, args):
+        tokens = parse(args)
+        folder = Tag_item(tokens[0])
+        tags = [self.core.get_tag_by_name(name) for name in tokens[1:]]
         self.core.set_folder_tags(folder, tags)
 
     # ADD items
