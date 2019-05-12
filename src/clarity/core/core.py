@@ -34,10 +34,14 @@ class Core():
         return self.tagDB.return_tag(name)
     
     def list_tags_start_with_text(self, text):
-        return self.tagDB.tags_start_with(text)
+        tags = self.tagDB.tags_start_with(text)
+        tags = sorted(tags,key=lambda tag: len(tag.used_in_folder_items) + len(tag.used_in_file_items))
+        return tags
     
     def list_tags_with_text(self, text):
-        return self.tagDB.tags_contain(text)
+        tags = self.tagDB.tags_contain(text)
+        tags = sorted(tags,key=lambda tag: len(tag.used_in_folder_items) + len(tag.used_in_file_items))
+        return tags
 
      # LIST items with tags
 
@@ -92,6 +96,9 @@ class Core():
 ## SEARCH
     # SEARCH helpers
 
+    def add_search_term(self, text):
+        self.search_term = text
+
     def remove_tag_from_search(self, tag):
         self.current_tags.remove(tag)
 
@@ -106,20 +113,20 @@ class Core():
         return self.last_tag
 
     def change_search_tag(self, tag_to_change, new_tag):
+        self.current_tags.insert(self.current_tags.index(tag_to_change), new_tag)
         self.current_tags.remove(tag_to_change)
-        self.current_tags.append(new_tag)
         
     def replace_search_tag(self, tag_to_replace, new_tag):
+        self.current_tags.insert(self.current_tags.index(tag_to_replace), new_tag)
         self.current_tags.remove(tag_to_replace)
-        self.current_tags.append(new_tag)
-        pass
 
     # LIST predictions
     
     def list_tag_predictions(self):
-        tags = self.list_all_tags()
+        #TODO hier sollte eigendlich eine prediction zu den tags anhand von search history kommen (sinvoll? schon vorhanden?)
+        tags = self.list_tags_with_text(self.search_term)
         tags = sorted(tags,key=lambda tag: tag.name)
-        return []
+        return tags
 
     def list_file_predictions(self):
         return []

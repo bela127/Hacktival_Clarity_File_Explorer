@@ -42,11 +42,15 @@ class File_db():
     def add_file(self, name, directory, tags):
         new_file = File_item(name, directory, tags)
         self.stor_items.append(new_file)
+        for tag in tags:
+            tag.used_in_file_items.append(new_file)
     
     # gets a name and a taglist and creates a folder
     def add_folder(self, name, directory, tags):
         new_folder = Folder_item(name, directory, tags)
         self.stor_items.append(new_folder)
+        for tag in tags:
+            tag.used_in_folder_items.append(new_folder)
 
     # returns all files in the system
     def list_all_files(self):
