@@ -25,10 +25,10 @@ class Tag_db():
         return tag_list
 
     # returns a tag
-    def tag(self, name):
+    def return_tag(self, name):
         for tag in self.tags:
             if name == tag.name:
-                return self.tag
+                return tag
         return None
     
     # gets a name and a taglist and creates a tag

@@ -26,6 +26,9 @@ class Core():
         pass
     
     # List Tags with text
+
+    def get_tag_by_name(self, name):
+        return self.tagDB.retu
     
     def list_tags_start_with_text(self, text):
         return self.tagDB.tags_start_with(text)
@@ -85,6 +88,9 @@ class Core():
 
 ## SEARCH
     # SEARCH helpers
+
+    def add_tag_to_search(self, tag):
+        self.current_tags.append(tag)
 
     def list_current_tags(self):
         return self.current_tags
