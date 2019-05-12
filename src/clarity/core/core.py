@@ -19,7 +19,7 @@ class Core():
         self.fileDB = fd.File_db()
         init = Initialize_data()
         init.init_tags(self.tagDB)
-        init.init_storage_items(self.fileDB)
+        init.init_storage_items(self.fileDB, self.tagDB)
 
         root_tag = self.tagDB.return_tag("root")
         self.last_tag = root_tag
