@@ -100,7 +100,7 @@ class Core():
         self.search_term = text
 
     def remove_tag_from_search(self, tag):
-        if tag not in self.current_tags:
+        if tag in self.current_tags:
             self.current_tags.remove(tag)
 
     def add_tag_to_search(self, tag):
