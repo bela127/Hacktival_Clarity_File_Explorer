@@ -35,9 +35,8 @@ class App_View (QtWidgets.QWidget):
         
         """ Area to contain Main View """
         area = Main_View(self, api)
-        layout.addWidget(area, 0,1)
+        layout.addWidget(area, 0, 1)
         
-        #app.setStyle('Fusion')
         self.setStyleSheet("""
                              background-color: #B0BEC5
                              """)

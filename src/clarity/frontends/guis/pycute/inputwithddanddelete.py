@@ -11,7 +11,7 @@ from FlowLayout import FlowLayout
 
 class InputItemWithDelete (QFrame):
     
-    def __init__(self, parent):
+    def __init__(self, parent, api, onRemove):
         
         super().__init__(parent)
         
@@ -38,7 +38,13 @@ class InputItemWithDelete (QFrame):
         
         self.cross = QPushButton('x', self)
         self.cross.setFixedWidth(20)
-        self.cross.clicked.connect(self.onCross)
+
+        def onCross():
+            text = self.dropdown.currentText()
+            onRemove(text)
+            self.setParent(None)
+
+        self.cross.clicked.connect(onCross)
         self.cross.setStyleSheet("""
                                  border: none;
                                  border-radius: 5px;
@@ -51,11 +57,6 @@ class InputItemWithDelete (QFrame):
         layout.addWidget(self.dropdown)
         layout.addWidget(self.cross)
         self.adjustSize()
-        
-    
-    def onCross(self):
-        #self.parent().removeWidget(self)
-        self.setParent(None)
     
     
     def setText(self, value):
@@ -65,9 +66,10 @@ class InputItemWithDelete (QFrame):
 
 class SearchHistory (QFrame):
     
-    def __init__(self, parent):
+    def __init__(self, parent, api):
         
         super().__init__(parent)
+        self.api = api
         
         self.layout = FlowLayout()
         self.setLayout(self.layout)
@@ -76,14 +78,20 @@ class SearchHistory (QFrame):
         self._items = []
     
     
-    def addItem(self, value):
-        item = InputItemWithDelete(self)
+    def addItem(self, value, api):
+        item = InputItemWithDelete(self, api)
         item.setText(value)
         self.layout.addWidget(item)
         self._items.append(item)
     
     
     def remove(self, item):
+        
+        text = item.text()
+        tag = self.api.tag_by_name(text)
+        self.api.remove_tag_from_search(tag)
+        self.parent().refresh_results()
+        
         self.layout.removeWidget(item)
         item.setParent(None)
     

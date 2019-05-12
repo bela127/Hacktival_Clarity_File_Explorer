@@ -129,3 +129,13 @@ class API:
     # MODULE stuff
     def list_all_modules(self):
         return self._core.list_all_modules()
+
+    # NOT SORTED YET
+    def get_tag_by_name(self, text):
+        return self._core.get_tag_by_name(text)
+    
+    def add_tag_to_search(self, tag):
+        self._core.add_tag_to_search(tag)
+    
+    def remove_tag_from_search(self, tag):
+        self._core.remove_tag_from_search(tag)
