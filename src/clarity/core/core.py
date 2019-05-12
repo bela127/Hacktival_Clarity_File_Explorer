@@ -17,7 +17,7 @@ class Core():
         self.tagDB = td.Tag_db()
         self.fileDB = fd.File_db()
 
-        root_tag = self.tagDB.tag("root")
+        root_tag = self.tagDB.return_tag("root")
         self.last_tag = root_tag
         self.current_tags = [root_tag]
         pass
@@ -75,7 +75,7 @@ class Core():
    # ADD items
 
     def add_tag(self, tag: str, tags):
-        self.tagDB.add_tag(tag, tags)
+        self.tagDB.create_tag(tag, tags)
 
     def add_file(self, file: str, directory: str, tags = []):
         self.fileDB.add_file(file, directory, tags)
