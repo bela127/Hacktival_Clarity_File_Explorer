@@ -155,8 +155,9 @@ class Core():
         return self.tagDB.list_all_tags()
     
     # return n random tags
-    def list_random_tags(self, n):
-        return random.sample(self.list_all_tags(), n)
+    def list_random_tags(self, n):^
+        sample = random.sample(set(self.list_all_tags()), n)
+        return sample
 
     # LIST items that match exactly with the tags
     
