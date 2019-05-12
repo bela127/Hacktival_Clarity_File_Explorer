@@ -3,7 +3,8 @@ from clarity.database.in_memory_db.tag_item import Tag_item
 class Tag_db():
     def __init__(self):
         self.root_tag = Tag_item("root")
-            
+        self.root_tag.used_in_tag_items.append(self.root_tag)
+
     # returns all tags that start with the string text
     def tags_start_with(self, text):
         tag_list = []
