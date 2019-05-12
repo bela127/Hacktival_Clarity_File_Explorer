@@ -8,6 +8,7 @@ Created on Sat May 11 15:50:17 2019
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QCheckBox,QVBoxLayout,QGroupBox,QHBoxLayout,QScrollArea, QWidget, QListWidget, QLineEdit, QGridLayout
 from inputwithddanddelete import InputItemWithDelete
+from FlowLayout import FlowLayout
 
 class Search_Input (QLineEdit):
     
@@ -48,6 +49,7 @@ class Main_View (QWidget):
         self.search_history_widget = QWidget()
         self.scrollarea.setWidget(self.search_history_widget)
         self.search_history_layout = QHBoxLayout(self.search_history_widget)
+        #self.search_history_layout = FlowLayout(self.search_history_widget)
 
         
         
@@ -117,11 +119,15 @@ class Main_View (QWidget):
         return item
     
     def refresh_results(self):
-        tags = self.api.list_current_tags()
-        items = self.api.list_storage_items_with_tags(tags)
-        items = [item.name for item in items]
+        try:
+            tags = self.api.list_current_tags()
+            items = self.api.list_storage_items_with_tags(tags)
+            items = [item.name for item in items]
 
-        print('Refresh!\n' + str(items))
+            print('Refresh!\n' + str(items))
 
-        self.results.clear()
-        self.results.addItems(items)
+            self.results.clear()
+            self.results.addItems(items)
+        
+        except:
+            pass

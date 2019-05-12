@@ -17,6 +17,7 @@ class InputItemWithDelete (QFrame):
         
         layout = QHBoxLayout()
         self.setLayout(layout)
+        self.text = ''
         
         self.setStyleSheet("""
                            border: 1px solid grey;
@@ -27,7 +28,6 @@ class InputItemWithDelete (QFrame):
         self.setGraphicsEffect(shadow)
         
         self.dropdown = QComboBox(self)
-        #self.dropdown.addItems(['suggest1', 'suggest2'])
         self.dropdown.setStyleSheet("""
                                     border: none;
                                     border-radius: 2px;
@@ -43,22 +43,28 @@ class InputItemWithDelete (QFrame):
         def onSelect():
             text = self.dropdown.currentText()
             tag = api.get_tag_by_name(text)
-            tags = api.list_random_tags(5)
+            tags = api.list_all_tags()[:5] # TODO
             items = [tag.name for tag in tags]
             self.dropdown.clear()
             self.dropdown.addItem(text)
             self.dropdown.addItems(items)
         
         self.dropdown.highlighted.connect(onSelect)
+        #self.dropdown.addItems(['xD', '^^', ':P'])
 
         def onChange():
-            #text = self.dropdown.currentText()
-            #to_replace = api.get_tag_by_name(text)
-            #api.replace_search_tag(to_replace, new_tag)
-            pass
+            text = self.dropdown.currentText()
+            new_tag = api.get_tag_by_name(text)
+            to_replace = api.get_tag_by_name(self.text)
+            if new_tag and to_replace:
+                api.replace_search_tag(to_replace, new_tag)
+                print('' + self.text + ' -> ' + text)
+                self.text = text
         
         self.dropdown.activated.connect(onChange)
 
+
+        """ Remove """
         def onCross():
             text = self.dropdown.currentText()
             onRemove(text)
@@ -79,11 +85,11 @@ class InputItemWithDelete (QFrame):
         
         layout.addWidget(self.dropdown)
         layout.addWidget(self.cross)
-        self.adjustSize()
     
     
     def setText(self, value):
         self.dropdown.clear()
         self.dropdown.addItem(value)
         self.dropdown.setCurrentText(value)
+        self.text = value
     
