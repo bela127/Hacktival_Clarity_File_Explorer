@@ -1,12 +1,12 @@
 import typing
-from storage_item import Storage_item
-from folder_item import Folder_item
-from file_item import File_item
-from tag_item import Tag_item
+from clarity.database.in_memory_db.storage_item import Storage_item
+from clarity.database.in_memory_db.folder_item import Folder_item
+from clarity.database.in_memory_db.file_item import File_item
+from clarity.database.in_memory_db.tag_item import Tag_item
 
 class File_db():
     def __init__(self):
-        self.stor_items: [Storage_item] = []        #list of storage_items
+        self.stor_items = []        #list of storage_items
 
     # gets an item and a taglist and addes these tags to the item   
     def set_tags(self, item: File_item, tag_list: [Tag_item]):

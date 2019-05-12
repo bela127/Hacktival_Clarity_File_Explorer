@@ -1,13 +1,13 @@
-from item import Item
-from storage_item import Storage_item
-from folder_item import Folder_item
-from file_item import File_item
+from clarity.database.in_memory_db.item import Item
+from clarity.database.in_memory_db.storage_item import Storage_item
+from clarity.database.in_memory_db.folder_item import Folder_item
+from clarity.database.in_memory_db.file_item import File_item
 import typing
 
 class Tag_item(Item):
     
-    def __init__(self, name: str, tag_list: [Tag_item] = []):
+    def __init__(self, name: str, tag_list = []):
         super().__init__(self, name, tag_list)
-        self.used_in_folder_items: [Folder_item] = []   #list of folder_items
-        self.used_in_file_items: [File_item] = []   #list of file_items
-        self.used_in_tag_items: [Tag_item] = []   #list of tag_items
+        self.used_in_folder_items = []   #list of folder_items
+        self.used_in_file_items = []   #list of file_items
+        self.used_in_tag_items = []   #list of tag_items

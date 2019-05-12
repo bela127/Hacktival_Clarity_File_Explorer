@@ -1,3 +1,4 @@
+from clarity.api.api import API
 # -*- coding: utf-8 -*-
 """
 Created on Sat May 11 12:53:11 2019
@@ -5,8 +6,12 @@ Created on Sat May 11 12:53:11 2019
 @author: User
 """
 
+from PyQt5.QtGui import QGuiApplication, QWindow
 from PyQt5.QtWidgets import QApplication, QWindow, QWidget, QListWidget, QGridLayout
 from view import Main_View
+
+
+api = API()
 
 
 class App_View (QWindow):

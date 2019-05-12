@@ -1,8 +1,6 @@
-from item import item
-from tag_item import Tag_item
-import typing
+from clarity.database.in_memory_db.item import Item
 
-class Storage_item(item):
-    def __init__(self, name: str, directory: str, tag_list: [Tag_item]):
+class Storage_item(Item):
+    def __init__(self, name: str, directory: str, tag_list):
         super().__init__(self, name, tag_list)
         self.directory = directory
