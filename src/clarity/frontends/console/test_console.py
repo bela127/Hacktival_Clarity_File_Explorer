@@ -56,9 +56,11 @@ class Test_console(cmd.Cmd):
 
     def do_list_tags_with_text(self, args):
         tags = self.core.list_tags_with_text(args)
+        print(tags)
     
     def do_list_tags_start_with_text(self, args):
         tags = self.core.list_tags_start_with_text(args)
+        print(tags)
 
     # List Tags with querry
 
@@ -119,47 +121,67 @@ class Test_console(cmd.Cmd):
         tokens = parse(args)
         tags = [self.core.get_tag_by_name(name) for name in tokens[0:]]
         files = self.core.list_files_with_tags(tags)
+        print(files)
     
     def do_list_folders_with_tags(self, args):
         tokens = parse(args)
         tags = [self.core.get_tag_by_name(name) for name in tokens[0:]]
         folders = self.core.list_folders_with_tags(tags)
+        print(folders)
 
     # LIST items with tag
 
-    def do_list_items_with_tag(self, args):
-        items = self.core.list_items_with_tags(tags)
-
     def do_list_tags_with_tag(self, args):
-        tags = self.core.list_tags_with_tags(tags)
+        tokens = parse(args)
+        tag = tokens[0]
+        tags = self.core.list_tags_with_tags(tag)
+        print(tags)
 
     def do_list_files_with_tag(self, args):
-        files = self.core.list_files_with_tags(tags)
+        tokens = parse(args)
+        tag = tokens[0]
+        files = self.core.list_files_with_tags(tag)
+        print(files)
     
     def do_list_folders_with_tag(self, args):
-        folders = self.core.list_folders_with_tags(tags)
+        tokens = parse(args)
+        tag = tokens[0]
+        folders = self.core.list_folders_with_tags(tag)
+        print(folders)
 
     # LIST all items 
 
+    def do_list_all_tags(self, args):
+        tags = self.core.list_all_tags()
+        print(tags)
+
     def do_list_all_files(self, args):
         files = self.core.list_all_files()
+        print(files)
 
     def do_list_all_folders(self, args):
         folders = self.core.list_all_folders()
-
-    def do_list_all_tags(self, args):
-        tags = self.core.list_all_tags()
+        print(folders)
 
     # LIST exact items
-    
-    def do_list_exact_files(self, args):
-        files = self.core.list_exact_files(tags)
-
-    def do_list_exact_folders(self, args):
-        folders = self.core.list_exact_folders(tags)
 
     def do_list_exact_tags(self, args):
+        tokens = parse(args)
+        tags = [self.core.get_tag_by_name(name) for name in tokens[0:]]
         tags = self.core.list_exact_tags(tags)
+        print(tags)
+    
+    def do_list_exact_files(self, args):
+        tokens = parse(args)
+        tags = [self.core.get_tag_by_name(name) for name in tokens[0:]]
+        files = self.core.list_exact_files(tags)
+        print(files)
+
+    def do_list_exact_folders(self, args):
+        tokens = parse(args)
+        tags = [self.core.get_tag_by_name(name) for name in tokens[0:]]
+        folders = self.core.list_exact_folders(tags)
+        print(folders)
 
     # LIST Tags of item
 
