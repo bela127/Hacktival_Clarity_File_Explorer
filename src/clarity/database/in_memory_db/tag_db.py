@@ -58,20 +58,24 @@ class Tag_db():
         return remaining_folders
 
     def list_files_with_tags(self, tag_list):
+        print(tag_list + " tag_list")
         remaining_files = []
 
         if len(tag_list) > 1:
-
             vergleichs_tag = self.return_tag(tag_list[1].name)
             remaining_files = vergleichs_tag.used_in_file_items
             print(remaining_files)
             for tag in tag_list[2 :]:
                 vergleichs_tag = self.return_tag(tag.name)
-                print(vergleichs_tag)
+                print(vergleichs_tag + " test1")
                 remaining_files = [ selected_file for selected_file in remaining_files if vergleichs_tag in selected_file.tag_list]
-                print(remaining_files)
+                print(remaining_files + " test2")
+                return remaining_files
         remaining_files = sorted(remaining_files,key=lambda tag: len(tag.used_in_folder_items) + len(tag.used_in_file_items))
-        print(remaining_files)
+        if len(tag_list) > 1:
+            vergleichs_tag = self.return_tag(tag_list[1].name)
+            remaining_files = vergleichs_tag.used_in_file_items
+            return remaining_files
         return remaining_files
 
     def list_tags_with_tags(self, tag_list):

@@ -56,7 +56,9 @@ class Core():
         return self.tagDB.list_folders_with_tags(tags)
 
     def list_storage_items_with_tags(self, tags):
-        return self.tagDB.list_folders_with_tags(tags) + self.tagDB.list_files_with_tags(tags)
+        ret = self.tagDB.list_folders_with_tags(tags)
+        ret += self.tagDB.list_files_with_tags(tags)
+        return ret
 
       # LIST Tags of item
 
