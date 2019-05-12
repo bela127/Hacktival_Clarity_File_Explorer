@@ -63,6 +63,15 @@ class Tag_db():
         tags = list(set(tags))
         return tags
 
+    def list_storage_items_with_tags(self, tag_list: [Tag_item]):
+        tags = self.list_files_with_tags(tag_list)
+        tags += self.list_folders_with_tags(tag_list)
+        return tags
+
+    # gets a tag and a taglist and adds the tags to the tag
+    def set_tag_tags(self, tag: Tag_item, tag_list: [Tag_item]):
+        tags = tag.tag_list + tag_list
+        tag.tag_list = list(set(tags))
 
 
     

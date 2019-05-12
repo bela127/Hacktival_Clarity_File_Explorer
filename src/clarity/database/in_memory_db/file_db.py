@@ -28,4 +28,35 @@ class File_db():
                 return self.stor_items[i].tag_list
         return[]
 
+    # gets a file and a taglist and adds the tags to the file
+    def set_file_tags(self, file: File_item, tag_list: [Tag_item]):
+        tags = file.tag_list + tag_list
+        file.tag_list = list(set(tags))
     
+    # gets a folder and a taglist and adds the tags to the folder
+    def set_folder_tags(self, folder: Folder_item, tag_list: [Tag_item]):
+        tags = folder.tag_list + tag_list
+        folder.tag_list = list(set(tags))
+    
+    # gets a name and a taglist and creates a file
+    def add_file(self, name, directory, tags):
+        new_file = File_item(name, directory, tags)
+        self.stor_items.append(new_file)
+    
+    # gets a name and a taglist and creates a file
+    def add_folder(self, name, directory, tags):
+        new_folder = Folder_item(name, directory, tags)
+        self.stor_items.append(new_folder)
+
+    # returns all files in the system
+    def list_all_files(self):
+        files: [File_item] = []
+        for item in self.stor_items:
+            if type(item) == type(File_item):
+                files.append(item)
+        return files
+
+    # returns all folders in the system
+    def list_all_folders(self):
+        folders: [Folder_item] = [folder for folder in self.stor_items if type(folder) == type(Folder_item)]
+        return folders
