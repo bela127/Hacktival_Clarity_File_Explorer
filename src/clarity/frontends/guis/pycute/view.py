@@ -99,6 +99,15 @@ class Main_View (QWidget):
         self.results = QListWidget(self)
         self.results.addItem('Results here')
         #self.results.setFixedWidth(600)
+
+        def onOpenFile(current):
+            text = current.text()
+            file = '../files/' + text
+
+            import webbrowser
+            webbrowser.open(file)
+        
+        self.results.itemClicked.connect(onOpenFile)
         
         #layout.setColumnStretch(1, 2)
         #layout.setColumnStretch(2, 2)
