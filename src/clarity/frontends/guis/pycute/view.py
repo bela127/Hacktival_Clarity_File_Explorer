@@ -67,11 +67,11 @@ class Main_View (QWidget):
             api.add_tag_to_search(tag)
             
             self.search_history_layout.addWidget(self.Item(item.text(), api))
-
             self.refresh_results()
+            self.refresh_suggestions()
+            self.search_input.setText('')
         
         self.search_input = Search_Input(self, onEnter)
-        self.search_input.setText('Tag..')
         self.search_input.setFixedWidth(150)  
         
         
@@ -91,6 +91,7 @@ class Main_View (QWidget):
             tag = api.get_tag_by_name(current.text())
             api.add_tag_to_search(tag)
 
+            self.refresh_suggestions()
             self.refresh_results()
         
         self.suggestions.itemClicked.connect(onSuggestion)
@@ -134,10 +135,19 @@ class Main_View (QWidget):
             items = self.api.list_storage_items_with_tags(tags)
             items = [item.name for item in items]
 
-            print('Refresh!\n' + str(items))
+            print('Refresh! -> ' + str(items))
 
             self.results.clear()
             self.results.addItems(items)
         
         except:
             pass
+    
+
+    def refresh_suggestions(self, text = ''):
+        
+        tags = self.api.list_tags_with_text(text)
+        items = [tag.name for tag in tags]
+        
+        self.suggestions.clear()
+        self.suggestions.addItems(items)
