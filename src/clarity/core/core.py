@@ -88,7 +88,7 @@ class Core():
     def add_tag(self, tag: str, tags):
         self.tagDB.add_tag(tag, tags)
 
-    def add_file(self, file: str, directory: str, tags = []):
+    def add_file(self, file: str, directory: str, tags):
         self.fileDB.add_file(file, directory, tags)
 
     def add_folder(self, folder: str, directory: str, tags = []):
@@ -157,6 +157,7 @@ class Core():
     # return n random tags
     def list_random_tags(self, n):
         sample = random.sample(set(self.list_all_tags()), n)
+        print(sample)
         return sample
 
     # LIST items that match exactly with the tags
@@ -172,6 +173,15 @@ class Core():
     def list_exact_tags(self, tags):
         tags = [tag for tag in self.tagDB.list_tags_with_tags(tags) if len(tag.tag_list) == len(tags)]
         return tags
+
+    # methods to remove tags, files and folders from the db
+    def remove_tag(self, name):
+        tag = self.get_tag_by_name(name)
+        self.tagDB.remove_tag(tag)
+
+    def remove_file(self, name):
+        file = self.get
+        self.tagDB.remove_tag(tag)
 
     # MODULE stuff
     def list_all_modules(self):

@@ -65,16 +65,16 @@ class File_db():
         folders: [Folder_item] = [folder for folder in self.stor_items if type(folder) == type(Folder_item)]
         return folders
     
-    # removes a folder from the file-list 
-    def remove_folder(self, folder):
-        for tag in folder.tag_list:
-            tag.used_in_folder_items.remove(folder)
-        
-        self.stor_items.remove(folder)
-    
     # removes a file from the file-list 
     def remove_file(self, file):
         for tag in file.tag_list:
             tag.used_in_file_items.remove(file)
         
         self.stor_items.remove(file)
+    
+    # removes a folder from the file-list 
+    def remove_folder(self, folder):
+        for tag in folder.tag_list:
+            tag.used_in_folder_items.remove(folder)
+        
+        self.stor_items.remove(folder)
