@@ -112,8 +112,8 @@ class Test_console(cmd.Cmd):
     def do_list_tags_with_tags(self, args):
         tokens = parse(args)
         tags = [self.core.get_tag_by_name(name) for name in tokens[0:]]
-        tags = self.core.list_tags_with_tags(tags)
-        print(tags)
+        ret = self.core.list_tags_with_tags(tags)
+        print(ret)
 
     def do_list_files_with_tags(self, args):
         tokens = parse(args)
