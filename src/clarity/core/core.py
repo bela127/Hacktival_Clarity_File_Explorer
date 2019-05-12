@@ -41,6 +41,11 @@ class Core():
         return tags
     
     def list_tags_with_text(self, text):
+        if text == "":
+            tags = self.tagDB.list_all_tags()
+            tags = set(tags) - set(self.current_tags)
+            tags = sorted(tags,key=lambda tag: len(tag.used_in_folder_items) + len(tag.used_in_file_items))
+            return tags
         tags = self.tagDB.tags_contain(text)
         tags = set(tags) - set(self.current_tags)
         tags = sorted(tags,key=lambda tag: len(tag.used_in_folder_items) + len(tag.used_in_file_items))
@@ -60,7 +65,7 @@ class Core():
     def list_storage_items_with_tags(self, tags):
         ret = self.tagDB.list_folders_with_tags(tags)
         ret += self.tagDB.list_files_with_tags(tags)
-        return ret
+        return list(set(ret))
 
       # LIST Tags of item
 
