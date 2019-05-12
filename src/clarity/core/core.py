@@ -93,7 +93,8 @@ class Core():
         self.current_tags.remove(tag)
 
     def add_tag_to_search(self, tag):
-        self.current_tags.append(tag)
+        if tag not in self.current_tags:
+            self.current_tags.append(tag)
 
     def list_current_tags(self):
         return self.current_tags
@@ -105,15 +106,16 @@ class Core():
         self.current_tags.remove(tag_to_change)
         self.current_tags.append(new_tag)
         
-
     def replace_search_tag(self, tag_to_replace, new_tag):
-        self.current_tags.remove(tag_to_change)
+        self.current_tags.remove(tag_to_replace)
         self.current_tags.append(new_tag)
         pass
 
     # LIST predictions
     
     def list_tag_predictions(self):
+        tags = self.list_all_tags()
+        tags = sorted(tags,key=lambda tag: tag.name)
         return []
 
     def list_file_predictions(self):
